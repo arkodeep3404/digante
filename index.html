@@ -29,6 +29,12 @@
 
 </head>
 
+<style>
+  #secondDiv {
+    height: var(--firstDivHeight);
+  }
+</style>
+
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
@@ -427,7 +433,7 @@
         <div class="row">
           <div class="col-lg-6 mb-4">
             <div class="d-block d-flex custom-media algin-items-stretch">
-              <div class="text text-left" style="max-height: 340px; max-width: 350px;">
+              <div id="firstDiv" class="text text-left" style="max-width: 60%">
                 <h3>Dr. Aparna Lahiri (MBBS, MD)</h3>
                 <p class="mb-2 text-white">Do not look for luxury in watches or bracelets, do not look for luxury in
                   forks or
@@ -442,12 +448,12 @@
                   life.
                 </p>
               </div>
-              <div class="img-bg" style="background-image: url('images/169.jpg'); min-height: 340px">
+              <div class="img-bg" style="background-image: url('images/169.jpg');" id="secondDiv">
               </div>
             </div>
           </div>
           <div class="col-lg-6 mb-4">
-            <div class="d-block d-flex custom-media algin-items-stretch">
+            <div class="d-block d-flex custom-media algin-items-stretch">-
               <div class="text text-left">
                 <h3>Dr. Rajat Chatterjee (MBBS, MS, Mch)</h3>
                 <p class="mb-2 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, commodi.</p>
@@ -678,6 +684,17 @@
 
 
   <script src="js/main.js"></script>
+
+  <script>
+    window.onload = function () {
+      const firstDiv = document.getElementById('firstDiv');
+      const secondDiv = document.getElementById('secondDiv');
+      const firstDivHeight = firstDiv.offsetHeight;
+
+      secondDiv.style.setProperty('--firstDivHeight', `${firstDivHeight}px`);
+    };
+
+  </script>
 
 
 
