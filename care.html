@@ -24,15 +24,22 @@
 
     <style>
         :root {
-            --primary-red: #d32f2f;
-            --secondary-red: #b71c1c;
+            --primary-red: #a33b3b;
+            --secondary-red: #822f2f;
+            --accent-soft: #fdf2f2;
         }
 
+        .text-danger { color: var(--primary-red) !important; }
+        .bg-danger { background-color: var(--primary-red) !important; }
+        .border-danger { border-color: var(--primary-red) !important; }
+        .btn-danger { background-color: var(--primary-red); border-color: var(--primary-red); }
+        .btn-danger:hover { background-color: var(--secondary-red); border-color: var(--secondary-red); }
+
         .care-hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/1.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/care_hero_bg.png');
             background-size: cover;
             background-position: center;
-            padding: 100px 0;
+            padding: 120px 0;
             color: white;
             text-align: center;
         }
@@ -58,7 +65,9 @@
 
         /* Template Style Services Grid */
         .services-grid {
-            background: #f8f9fa;
+            background: #fdfdfd;
+            background-image: radial-gradient(#a33b3b08 1px, transparent 1px);
+            background-size: 20px 20px;
             padding: 80px 0;
         }
 
@@ -89,12 +98,19 @@
         }
 
         .service-item h3 {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 700;
-            color: #333;
             margin-bottom: 15px;
-            font-family: "Open Sans", sans-serif;
+            color: #333;
         }
+
+        .service-item p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+
 
         /* Pricing Table Style */
         .pricing-table-container {
@@ -190,6 +206,19 @@
         .about-section {
             padding: 80px 0;
             background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '❤';
+            position: absolute;
+            top: 10%;
+            right: -5%;
+            font-size: 300px;
+            color: #a33b3b05;
+            z-index: 0;
+            transform: rotate(-15deg);
         }
 
         .about-content p {
@@ -212,6 +241,133 @@
             font-weight: 700;
             margin-top: 20px;
         }
+
+        /* Trust Card Styles */
+        .trust-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .trust-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(211, 47, 47, 0.1);
+            border-color: var(--primary-red);
+        }
+
+        .trust-card .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-soft);
+            color: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .trust-card:hover .icon-circle {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .trust-card h5 {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .trust-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        .hover-zoom {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-zoom:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .section-title {
+            color: #a33b3b;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Fix anchor cutting due to sticky header */
+        section[id], div[id] {
+            scroll-margin-top: 130px;
+        }
+
+        @media (max-width: 767px) {
+            .care-hero h1 {
+                font-size: 2rem !important;
+            }
+            .care-hero .lead {
+                font-size: 1.1rem !important;
+            }
+            .service-item h3 {
+                font-size: 20px;
+            }
+            .service-item p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        body {
+            font-family: 'Open Sans', sans-serif !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Open Sans', sans-serif !important;
+        }
+
+        .cta-btn-hero {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn-primary {
+            background: var(--primary-red);
+            color: white !important;
+            border: 2px solid var(--primary-red);
+        }
+
+        .cta-btn-primary:hover {
+            background: transparent;
+            color: var(--primary-red) !important;
+        }
+
+        .cta-btn-outline {
+            border: 2px solid white;
+            color: white !important;
+        }
+
+        .cta-btn-outline:hover {
+            background: white;
+            color: var(--primary-red) !important;
+        }
+
     </style>
 </head>
 
@@ -236,6 +392,26 @@
         </div>
 
         <header class="site-navbar light js-sticky-header site-navbar-target" role="banner">
+            <div class="site-top-bar">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12 text-center text-lg-right py-1">
+                            <a href="tel:+919477580806" class="mr-3 mr-lg-4">
+                                <span class="icon-phone mr-2"></span>(+91) 94775 80806
+                            </a>
+                            <a href="tel:+919831088909" class="mr-3 mr-lg-4">
+                                <span class="icon-phone mr-2"></span>(+91) 98310 88909
+                            </a>
+                            <a href="https://wa.me/918902388778" class="d-none d-sm-inline-block">
+                                <span class="icon-whatsapp mr-2"></span>(+91) 89023 88778
+                            </a>
+                            <a href="https://wa.me/918902388778" class="d-inline-block d-sm-none">
+                                <span class="icon-whatsapp mr-2"></span>WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-6 col-xl-2">
@@ -260,14 +436,16 @@
         </header>
 
         <div class="care-hero">
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <img src="images/care.jpeg" alt="Digante Care" class="care-logo-hero">
-                <h1 class="display-4 font-weight-bold">Elderly Health Care At Your Doorstep</h1>
-                <p class="lead">Care for your health at your doorstep, run by city's renowned group of DOCTORS.</p>
-                <p class="mb-4"
-                    style="font-size: 1.3rem; letter-spacing: 1px; font-weight: 300; text-transform: uppercase;">
-                    Blending luxury care with affordability</p>
-                <p>In your city is now just a phone call away. Your health is our concern.</p>
+                <h1 class="display-4 font-weight-bold">Expert Medical Care at Home 24x7</h1>
+                <p class="lead px-lg-5">Even the best-equipped home can fall short during a sudden midnight emergency. With Digante Home Care, you’re never alone—our highly qualified senior doctors provide continuous guidance and real-time support when it matters most.</p>
+                
+                <div class="mt-5">
+                    <a href="tel:+919477580806" class="cta-btn-hero cta-btn-primary mb-3">Talk to a Senior Doctor Now</a>
+                    <a href="#plans" class="cta-btn-hero cta-btn-primary mb-3">Book a Doctor-Guided Plan</a>
+                    <a href="#critical-care" class="cta-btn-hero cta-btn-primary mb-3">Set Up Critical Care at Home</a>
+                </div>
             </div>
         </div>
 
@@ -276,7 +454,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10 about-content">
                         <h2 class="section-title text-center">About This Venture</h2>
-                        <p>For over eight years, <strong>"DIGANTE Old Age Home"</strong> in Chuchura, has established
+                        <p><strong>Digante Elderly Home Care</strong> is an extended division of <strong>Digante Senior Citizens’ Residence (Old Age Home, Chuchura, Hooghly)</strong>.</p>
+                        
+                        <p>For over eight years, our parent organization has established
                             itself as a beacon of trust, dignity, and compassionate care. Initially a residence, it
                             evolved into a reassuring presence for families and a true home for seniors.</p>
 
@@ -301,6 +481,63 @@
                                 dignity.</p>
                         </div>
 
+
+                        <div class="exclusiveness-box mt-5 p-4 p-lg-5" style="background: #fffafa; border-radius: 30px; border: 1px dashed var(--primary-red);">
+                            <h3 class="section-title text-center">🌟 What Makes Digante Exclusive?</h3>
+                            <div class="row mt-5">
+                                <div class="col-md-6 mb-4" data-aos="fade-right">
+                                    <h4 class="text-danger font-weight-bold"><span class="icon-clock-o mr-2"></span>Because Emergencies Don’t Wait</h4>
+                                    <p>A silent midnight crisis can turn critical without expert intervention. Digante Home Care ensures the constant presence and guidance of experienced senior doctors—bringing safety, confidence, and care into your home, 24/7.</p>
+                                </div>
+                                <div class="col-md-6 mb-4" data-aos="fade-left">
+                                    <h4 class="text-danger font-weight-bold"><span class="icon-stethoscope mr-2"></span>More Than Home Care—Doctor-Led Care</h4>
+                                    <p>Equipment and trained nurses alone aren't enough for critical patients. Digante Home Care connects them with dedicated senior doctors who guide every step of care—ensuring faster decisions, better outcomes, and peace of mind at all times.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trust-factors mt-5">
+                            <h3 class="section-title text-center">❤️ Why Families Trust Digante?</h3>
+                            <div class="row mt-5">
+                                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="trust-card">
+                                        <div class="icon-circle">
+                                            <span class="icon-user-md"></span>
+                                        </div>
+                                        <h5>Doctor-led model</h5>
+                                        <p>Managed directly by senior doctors, ensuring medical accuracy in every step.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="trust-card">
+                                        <div class="icon-circle">
+                                            <span class="icon-shield"></span>
+                                        </div>
+                                        <h5>Midnight Support</h5>
+                                        <p>Real-time doctor guidance during critical midnight emergencies.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="trust-card">
+                                        <div class="icon-circle">
+                                            <span class="icon-heart"></span>
+                                        </div>
+                                        <h5>Dignity & Safety</h5>
+                                        <p>Ethical, verified caregivers focusing on the dignity of every senior citizen.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="trust-card">
+                                        <div class="icon-circle">
+                                            <span class="icon-home"></span>
+                                        </div>
+                                        <h5>Legacy of Trust</h5>
+                                        <p>Backed by Digante Senior Citizens’ Residence—a name synonymous with care.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <p class="mt-5 text-center font-italic" style="font-size: 1.3rem; color: var(--primary-red);">
                             "We believe that aging with grace deserves not just support, but honor—and care that truly
                             feels like home."</p>
@@ -312,7 +549,7 @@
         <section class="services-grid">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-title">Our Services</h2>
+                    <h2 class="section-title">Our Membership Services</h2>
                     <p class="mb-5">Quality healthcare right at your door step with well equipped infrastructure.</p>
                 </div>
 
@@ -321,88 +558,88 @@
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-hospital-o"></span></div>
                             <h3>ICU at Your Home</h3>
-                            <p><small>Bed sore care, I.V lines, DVT prophylaxis, Fluid management, Running infusions,
-                                    Equipment rental/purchase.</small></p>
+                            <p>Bed sore care, I.V lines, DVT prophylaxis, Fluid management, Running infusions,
+                                    Equipment rental/purchase.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-medkit"></span></div>
                             <h3>Post Surgical Care</h3>
-                            <p><small>Assisted discharge, Wound & drain care, Pain management, Stitch removal, Vital
-                                    signs monitoring.</small></p>
+                            <p>Assisted discharge, Wound & drain care, Pain management, Stitch removal, Vital
+                                    signs monitoring.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-heartbeat"></span></div>
                             <h3>Home Cardiac Care</h3>
-                            <p><small>ECG tracking, Holter monitoring, Post-surgical cardiac recovery, Diet regulation
-                                    for heart patients.</small></p>
+                            <p>ECG tracking, Holter monitoring, Post-surgical cardiac recovery, Diet regulation
+                                    for heart patients.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-stethoscope"></span></div>
                             <h3>Home Oncology Service</h3>
-                            <p><small>Chemotherapy at home, Palliative care, Nutrition counselling, Pain management for
-                                    terminally ill patients.</small></p>
+                            <p>Chemotherapy at home, Palliative care, Nutrition counselling, Pain management for
+                                    terminally ill patients.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-user-md"></span></div>
                             <h3>Specialist Services</h3>
-                            <p><small>Dialysis assistance, Chemoport flush, Home ventilation, Colostomy & ileostomy
-                                    care, PICC line dressing.</small></p>
+                            <p>Dialysis assistance, Chemoport flush, Home ventilation, Colostomy & ileostomy
+                                    care, PICC line dressing.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-male"></span></div>
                             <h3>Home Physiotherapy</h3>
-                            <p><small>Neuro & Musculoskeletal recovery, Sports & Chest physiotherapy, High-end portable
-                                    equipment at home.</small></p>
+                            <p>Neuro & Musculoskeletal recovery, Sports & Chest physiotherapy, High-end portable
+                                    equipment at home.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-clock-o"></span></div>
                             <h3>Respiratory Care</h3>
-                            <p><small>BIPAP & CPAP at home, Sleep studies, Nebulisation, Oxygen therapy, COPD
-                                    management.</small></p>
+                            <p>BIPAP & CPAP at home, Sleep studies, Nebulisation, Oxygen therapy, COPD
+                                    management.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-check-square-o"></span></div>
                             <h3>Everyday Nursing</h3>
-                            <p><small>I.V cannula insertion, Enema application, Ryles tube insertion, Injections, Wound
-                                    dressing.</small></p>
+                            <p>I.V cannula insertion, Enema application, Ryles tube insertion, Injections, Wound
+                                    dressing.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-flask"></span></div>
                             <h3>Diagnostic Services</h3>
-                            <p><small>Home blood sample collection, Delivery of reports from renowned labs, ECG at
-                                    home.</small></p>
+                            <p>Home blood sample collection, Delivery of reports from renowned labs, ECG at
+                                    home.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-file-text-o"></span></div>
                             <h3>Administrative Support</h3>
-                            <p><small>Assistance in paper work, claims, life certificates, banking, and post office
-                                    works.</small></p>
+                            <p>Assistance in paper work, claims, life certificates, banking, and post office
+                                    works.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-leaf"></span></div>
                             <h3>Nutritional Services</h3>
-                            <p><small>Individual diet counselling, nutritional assessment, and healthy grocery
-                                    guidance.</small></p>
+                            <p>Individual diet counselling, nutritional assessment, and healthy grocery
+                                    guidance.</p>
                         </div>
                     </div>
 
@@ -412,48 +649,55 @@
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-phone"></span></div>
                             <h3>24/7 Emergency Support</h3>
-                            <p><small>Immediate ambulance service and emergency medical intervention at any time of day
-                                    or night.</small></p>
+                            <p>Immediate ambulance service and emergency medical intervention at any time of day
+                                    or night.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-building-o"></span></div>
                             <h3>Hospitalization Support</h3>
-                            <p><small>Admission to empanelled hospitals and Polyclinic OPD visits accompanied by a
-                                    professional care manager.</small></p>
+                            <p>Admission to empanelled hospitals and Polyclinic OPD visits accompanied by a
+                                    professional care manager.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-smile-o"></span></div>
                             <h3>Well-being & Activities</h3>
-                            <p><small>Mental health sessions, hobby/activity sessions (Online/Offline) to ensure
-                                    emotional and social health.</small></p>
+                            <p>Mental health sessions, hobby/activity sessions (Online/Offline) to ensure
+                                    emotional and social health.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-calendar"></span></div>
                             <h3>Regular Health Audits</h3>
-                            <p><small>Weekly visits and general medical checkups to monitor vital signs and overall
-                                    progress.</small></p>
+                            <p>Weekly visits and general medical checkups to monitor vital signs and overall
+                                    progress.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-truck"></span></div>
                             <h3>Essential Deliveries</h3>
-                            <p><small>Prompt delivery of essential and urgent medicines or supplies directly to your
-                                    doorstep.</small></p>
+                            <p>Prompt delivery of essential and urgent medicines or supplies directly to your
+                                    doorstep.</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="service-item">
                             <div class="icon-box"><span class="icon-university"></span></div>
                             <h3>Paperwork/Banking Services</h3>
-                            <p><small>Assistance with Life Certificates, Banking, and Post Office related works for
-                                    seniors.</small></p>
+                            <p>Assistance with Life Certificates, Banking, and Post Office related works for
+                                    seniors.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="service-item">
+                            <div class="icon-box"><span class="icon-heart"></span></div>
+                            <h3>Emotional Support & Companionship</h3>
+                            <p>Emotional support and motivation to reduce anxiety and loneliness. We focus on social interaction, trust building, mood upliftment, and cognitive support.</p>
                         </div>
                     </div>
                 </div>
@@ -461,11 +705,147 @@
     </div>
     </section>
 
-    <section class="pricing-table-container">
+    <!-- Critical Care Setup Section -->
+    <section class="critical-care-section py-5" id="critical-care" style="background: #fffafa;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">🚑 COMPLETE HOME ICU SETUP</h2>
+                <p class="lead font-weight-bold text-danger">Total Hospital-Grade Infrastructure Managed by Senior Doctors</p>
+                <div class="p-3 bg-white shadow-sm rounded border-left border-danger d-inline-block mt-3" style="border-width: 5px !important;">
+                    <p class="mb-0"><strong>Real-time Edge:</strong> 24×7 Senior Doctor Monitoring | ICU Nurses | RT Support | Protocol Escalation</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Category 1: Airway -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">🫁 Airway & Respiratory</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ ICU Ventilator (All modes)</li>
+                            <li class="mb-1">✅ BiPAP / CPAP Machines</li>
+                            <li class="mb-1">✅ Oxygen (5–10L) + Cylinders</li>
+                            <li class="mb-1">✅ HFNC System (Premium)</li>
+                            <li class="mb-1">✅ Suction & Nebulizer</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 2: Monitoring -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">❤️ Monitoring Systems</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ Multiparameter Monitor</li>
+                            <li class="mb-1">✅ Continuous ECG Monitor</li>
+                            <li class="mb-1">✅ Pulse Oximeter & Digital BP</li>
+                            <li class="mb-1">✅ Central Monitoring Dashboard</li>
+                            <li class="mb-1">✅ Telemedicine Live System</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 3: Infusion -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">💉 Infusion & Drugs</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ Syringe Pumps (2–4 Units)</li>
+                            <li class="mb-1">✅ Volumetric Infusion Pump</li>
+                            <li class="mb-1">✅ IV Stands & Infusion Sets</li>
+                            <li class="mb-1">✅ Emergency Crash Med Tray</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 4: Emergency -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">⚡ Resuscitation</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ Defibrillator (AED/Manual)</li>
+                            <li class="mb-1">✅ Ambu Bags (Adult/Ped)</li>
+                            <li class="mb-1">✅ Full Intubation Kit</li>
+                            <li class="mb-1">✅ Emergency Airway Kit</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 5: Infrastructure -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">🛏️ Infrastructure</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ Motorized ICU Bed</li>
+                            <li class="mb-1">✅ Anti-Decubitus Air Mattress</li>
+                            <li class="mb-1">✅ Bedside Commode / Urinals</li>
+                            <li class="mb-1">✅ Patient Transfer Aids</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 6: Diagnostics -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">🧪 Home Diagnostics</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ Portable ABG / ECG / Ultrasound</li>
+                            <li class="mb-1">✅ Glucometer & Thermometers</li>
+                            <li class="mb-1">✅ Structured Monitoring Charts</li>
+                            <li class="mb-1">✅ 24/7 Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 7: Nursing -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">🧴 Nursing & Infection</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ PPE Kits & Sterilization</li>
+                            <li class="mb-1">✅ Catheterization & Feeding Kits</li>
+                            <li class="mb-1">✅ Dressing & Procedure Trays</li>
+                            <li class="mb-1">✅ Biomedical Waste Handling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 8: Safety -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-4 bg-white shadow-sm rounded h-100 border-top border-danger" style="border-width: 3px !important;">
+                        <h5 class="font-weight-bold mb-3">🔋 Power & Safety</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-1">✅ UPS / Inverter (Critical)</li>
+                            <li class="mb-1">✅ Voltage Stabilizers</li>
+                            <li class="mb-1">✅ Fire Extinguisher</li>
+                            <li class="mb-1">✅ Protocol Escalation Setup</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center mt-4">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <img src="images/critical_care.png" alt="Critical Care" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-8">
+                    <div class="bg-white p-4 shadow-sm border-left border-danger" style="border-width: 5px !important;">
+                        <h4 class="font-weight-bold text-danger mb-3">Why is Digante different from others:</h4>
+                        <p class="mb-3">Equipment alone isn’t enough in critical moments. We combine this high-end infrastructure with protocol-based <strong>Senior Doctor Supervision</strong> and skilled ICU staff to ensure a hospital-like outcome at home.</p>
+                        <a href="tel:+919477580806" class="btn btn-danger btn-lg px-5">Call for a Critical ICU Setup Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-table-container" id="plans">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-title">Digante Membership Packages</h2>
-                <p class="mb-5">Services at a Glimpse & many more</p>
+                <h2 class="section-title">💎 MEMBERSHIP PLANS</h2>
+                <h4 class="text-danger mb-3">Peace of Mind for Families</h4>
+                <p class="lead mb-2">💰 Plans starting from just <strong>₹2000/month</strong></p>
+                <p class="mb-5">(Platinum | Gold | Silver | Freedom options available)</p>
             </div>
 
             <div class="table-responsive" data-aos="fade-up"
@@ -474,117 +854,173 @@
                     <thead>
                         <tr>
                             <th style="width: 5%;">Sl No</th>
-                            <th style="width: 35%;">INCLUSIONS</th>
+                            <th style="width: 30%;">INCLUSIONS</th>
                             <th class="plan-name">PLATINUM</th>
                             <th class="plan-name">GOLD</th>
                             <th class="plan-name">SILVER</th>
+                            <th class="plan-name">FREEDOM</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Emergency Support</td>
+                            <td>Membership</td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Admission in empanelled hospitals</td>
+                            <td>24x7 Emergency Helpline & Ambulance</td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Ambulance service</td>
-                            <td>Actuals</td>
-                            <td>Actuals</td>
-                            <td>Actuals</td>
+                            <td>Complimentary Doctor Visit</td>
+                            <td>3 (Yearly/every 4 months)</td>
+                            <td>2 (Yearly)</td>
+                            <td>1 (as required)</td>
+                            <td>As per actual</td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Doctor Home Visit/consultation</td>
-                            <td>Twice a year</td>
-                            <td>Once a year</td>
+                            <td>Follow-Up Visit</td>
+                            <td>Actuals</td>
+                            <td>Actuals</td>
+                            <td>Actuals</td>
                             <td>Actuals</td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Paper work/ Banking assistance</td>
-                            <td>Once a month</td>
-                            <td>Once in 2 months</td>
-                            <td>Quarterly</td>
+                            <td>Personal Care Manager (CM)</td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
                         </tr>
                         <tr>
                             <td>6</td>
-                            <td>General Health Check Up</td>
-                            <td>Twice a year</td>
-                            <td>Once a year</td>
-                            <td>Actuals</td>
+                            <td>Monthly Free Visit (Companionship)</td>
+                            <td>8 visits</td>
+                            <td>6 visits</td>
+                            <td>4 visits</td>
+                            <td>1 visit</td>
                         </tr>
                         <tr>
                             <td>7</td>
-                            <td>Emotional boost up sessions</td>
-                            <td>Once a month</td>
-                            <td>Quarterly</td>
-                            <td>Actuals</td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>Psychological counseling</td>
-                            <td>Twice a year</td>
-                            <td>Once a year</td>
-                            <td>Actuals</td>
+                            <td>Single Free Visit Time</td>
+                            <td>Max 90 mins</td>
+                            <td>Max 90 mins</td>
+                            <td>Max 90 mins</td>
+                            <td>Max 90 mins</td>
                         </tr>
                         <tr>
                             <td>8</td>
-                            <td>Assist in Clinic/ investigation visit</td>
-                            <td><span class="icon-check icon-check-custom"></span></td>
-                            <td>Twice a year</td>
-                            <td>Actuals</td>
+                            <td>Min Courtesy Calls / Month</td>
+                            <td>15 calls</td>
+                            <td>12 calls</td>
+                            <td>8 calls</td>
+                            <td>4 calls</td>
                         </tr>
                         <tr>
                             <td>9</td>
-                            <td>Home delivery of essentials</td>
+                            <td>Help for Hospitalization</td>
+                            <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                             <td><span class="icon-check icon-check-custom"></span></td>
                         </tr>
                         <tr>
                             <td>10</td>
-                            <td>Comfort manager's visit</td>
-                            <td>Twice a week</td>
-                            <td>Twice a month</td>
-                            <td>Once a month</td>
+                            <td>Out of Home Services</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
                         </tr>
                         <tr>
                             <td>11</td>
-                            <td>Special Health check up at home</td>
-                            <td><span class="icon-check icon-check-custom"></span></td>
-                            <td><span class="icon-check icon-check-custom"></span></td>
-                            <td><span class="icon-check icon-check-custom"></span></td>
+                            <td>Doctor/Patient meet (Hospitalization)</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
                         </tr>
                         <tr>
                             <td>12</td>
-                            <td>Emotional support</td>
-                            <td>Once a month</td>
-                            <td>Once a quarter</td>
-                            <td>Twice a year</td>
+                            <td>Help with Essential Services</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
                         </tr>
                         <tr>
                             <td>13</td>
-                            <td>Comfort manager's call</td>
-                            <td>Daily</td>
-                            <td>Thrice a week</td>
-                            <td>Once a week</td>
+                            <td>Extra Care Manager Visit Charges</td>
+                            <td>From ₹500</td>
+                            <td>From ₹600</td>
+                            <td>From ₹800</td>
+                            <td>From ₹1000</td>
                         </tr>
                         <tr>
                             <td>14</td>
-                            <td>Home assistance</td>
-                            <td>Actuals</td>
-                            <td>Actuals</td>
-                            <td>Actuals</td>
+                            <td>Out-of-duty Surcharge (Night/Holidays)</td>
+                            <td>+₹1000</td>
+                            <td>+₹1000</td>
+                            <td>+₹1500</td>
+                            <td>+₹1500</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Complimentary Blood Test Yearly</td>
+                            <td>Worth ₹4,500 (2/yr)</td>
+                            <td>Worth ₹4,500 (2/yr)</td>
+                            <td>Worth ₹4,500 (2/yr)</td>
+                            <td>Na+, K+ only (2/yr)</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Reimbursements/Transport/Ambulance</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Physiotherapy Service</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                            <td>As per actual</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Helping with Technology</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                            <td>During free visits</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>Psychological Boosting</td>
+                            <td>YES</td>
+                            <td>YES</td>
+                            <td>YES</td>
+                            <td>YES</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>Receive Phone Calls</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
                         </tr>
                     </tbody>
                 </table>
@@ -594,14 +1030,50 @@
         </div>
     </section>
 
+    <section class="site-section bg-light" id="gallery-section">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-7 text-center">
+                    <h2 class="section-title">Home Care Gallery</h2>
+                    <p>Glimpses of our dedicated services and setup.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <a href="images/home_care/1.jpg" data-fancybox="gallery">
+                        <img src="images/home_care/1.jpg" alt="Home Care 1" class="img-fluid rounded shadow-sm hover-zoom">
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <a href="images/home_care/2.jpg" data-fancybox="gallery">
+                        <img src="images/home_care/2.jpg" alt="Home Care 2" class="img-fluid rounded shadow-sm hover-zoom">
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <a href="images/home_care/3.jpg" data-fancybox="gallery">
+                        <img src="images/home_care/3.jpg" alt="Home Care 3" class="img-fluid rounded shadow-sm hover-zoom">
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <a href="images/home_care/4.jpg" data-fancybox="gallery">
+                        <img src="images/home_care/4.jpg" alt="Home Care 4" class="img-fluid rounded shadow-sm hover-zoom">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section">
         <div class="container">
-            <h2 class="text-white mb-4">Need Immediate Assistance?</h2>
-            <p class="lead">We offer best health care service at home in times of your need.</p>
+            <h2 class="text-white mb-4">📞 24×7 Support & Guidance</h2>
+            <p class="lead">Call us today for a free consultation and personalized cost estimate for top-notch care services at your own home.</p>
             <div class="mt-4">
-                <p class="mb-2">Phone/WHAP: <a href="tel:+919477580806" class="phone-link">+91 94775 80806</a></p>
-                <p class="mb-2">WHAP: <a href="https://wa.me/918902388778" class="phone-link">+91 89023 88778</a></p>
-                <p class="mt-3">Email: <a href="mailto:digantehomecare@gmail.com"
+                <p class="mb-2">Call / WhatsApp: </p>
+                <a href="tel:+919477580806" class="phone-link">(+91) 94775 80806</a>
+                <a href="tel:+919831088909" class="phone-link">(+91) 98310 88909</a>
+                <a href="https://wa.me/918902388778" class="phone-link">(+91) 89023 88778</a>
+                <p class="mt-4">🌐 <a href="http://www.digante.in" class="text-white">www.digante.in</a></p>
+                <p class="mt-2">Email: <a href="mailto:digantehomecare@gmail.com"
                         class="phone-link">digantehomecare@gmail.com</a></p>
             </div>
         </div>
@@ -611,7 +1083,7 @@
         <div class="container text-center">
             <p class="copyright mb-0">
                 Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> Digante Elderly HomeCare. All rights
+                <script>document.write(new Date().getFullYear());</script> Digante Elderly Home Care. All rights
                 reserved.
             </p>
         </div>

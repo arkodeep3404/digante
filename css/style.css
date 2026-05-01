@@ -1,3 +1,9 @@
+:root {
+  --primary-red: #a33b3b;
+  --secondary-red: #822f2f;
+  --accent-soft: #fdf2f2;
+}
+
 /* Base */
 html {
   overflow-x: hidden;
@@ -425,6 +431,46 @@ body:after {
   -moz-appearance: none;
   appearance: none;
   width: 100%;
+}
+
+.site-top-bar {
+  background: var(--primary-red);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.site-top-bar a {
+  color: #fff !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.site-top-bar a:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.site-top-bar .icon-phone,
+.site-top-bar .icon-whatsapp {
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .site-top-bar {
+    font-size: 14px;
+  }
+
+  .site-top-bar .mr-3 {
+    margin-right: 8px !important;
+  }
+}
+
+/* Fix anchor cutting due to sticky header */
+section[id], div[id] {
+  scroll-margin-top: 130px;
 }
 
 /* Navbar */
