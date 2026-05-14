@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /main.html
+Disallow: /single.html
+Disallow: /code.txt
+Disallow: /prepros-6.config
+
+Sitemap: https://www.digante.in/sitemap.xml
