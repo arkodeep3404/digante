@@ -195,8 +195,34 @@
             }
 
             .choice-container {
-                padding-top: 50px;
+                padding-top: 90px !important;
                 padding-bottom: 50px;
+            }
+        }
+
+        .top-buttons-container {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .top-buttons-container {
+                top: 20px !important;
+                right: 15px !important;
+                left: 15px !important;
+                justify-content: center !important;
+            }
+            .top-buttons-container a {
+                font-size: 11px !important;
+                padding: 6px 12px !important;
+                margin-bottom: 0 !important;
+                margin-right: 8px !important;
+                letter-spacing: 0.5px !important;
+            }
+            .top-buttons-container a:last-child {
+                margin-right: 0 !important;
             }
         }
     </style>
@@ -217,8 +243,11 @@
         <div class="hero-choice">
             <div class="overlay"></div>
 
-            <div style="position: absolute; top: 30px; right: 30px; z-index: 10;">
-                <a href="careers.html" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 20px; font-weight: bold; border-color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">We're Hiring! View Careers</a>
+            <div class="top-buttons-container d-flex flex-row align-items-center justify-content-end">
+                <a href="careers.html" class="btn btn-outline-light btn-sm px-3 py-2 mr-2" style="border-radius: 20px; font-weight: bold; border-color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">We're Hiring! View Careers</a>
+                <a href="#" id="youtube-playlist-btn" class="btn btn-outline-light btn-sm px-3 py-2" style="border-radius: 20px; font-weight: bold; border-color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">
+                    <span class="icon-youtube mr-1" style="color: #ff0000; font-size: 1.1rem; vertical-align: middle; position: relative; top: -1px;"></span> Watch Vlogs &amp; Videos
+                </a>
             </div>
 
             <div class="container choice-container">
@@ -280,6 +309,31 @@
     <script src="js/isotope.pkgd.min.js"></script>
 
     <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById('youtube-playlist-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var playlistId = 'PLhkVqLNKmSaG0sJwqVi7e3vDrjc0G-hP_';
+            var si = 'xdYrm7CvsdpV4dX9';
+            var webUrl = 'https://www.youtube.com/playlist?list=' + playlistId + '&si=' + si;
+            
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var isAndroid = /android/i.test(userAgent);
+            var isiOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+            
+            if (isAndroid) {
+                // Open YouTube app on Android, fallback to browser
+                var intentUrl = 'intent://www.youtube.com/playlist?list=' + playlistId + '&si=' + si + '#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+                window.location.href = intentUrl;
+            } else if (isiOS) {
+                // Open standard URL. iOS Universal Links will automatically open the YouTube app if installed.
+                window.location.href = webUrl;
+            } else {
+                // Laptop/PC: Open in browser
+                window.open(webUrl, '_blank');
+            }
+        });
+    </script>
 
 </body>
 
